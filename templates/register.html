@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+
+        <div class="container">
+            <form action="{{ url_for('register') }}" method="POST">
+                <p><input type = "text" name = "Username" placeholder="Enter Your User Name"></p>
+                <p><input type = "text" name = "Password" placeholder="Enter Your Password"></p>
+                <div class="Buttoncontainer">
+                    <!-- <input class="Button" type = "submit" value = "Login" /> -->
+                    <input class="Button" type = "submit" value = "Register" />
+                </div>
+            </form>
+        </div>
+        {% if result==False %}
+            <div class="alert">Please Choose another Username, This Username is taken</div>
+        {% endif %}
+</body>
+
+<style>
+    .alert{
+        color:crimson;
+        padding:10px;
+        margin: 10px;
+        text-align:center;
+    }
+    .container{
+        position: absolute;
+        width: 70%;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        background-color:#2C3446;
+        border-radius: 20px;
+        padding: 30px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input[type=text],input[type=date], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.Button{
+        background-color: #4CAF50;
+        border-radius: 20px;
+        border: 0;
+        padding: 10px;
+        margin: 10px;
+    }
+    input[type=submit]:hover {
+  background-color: #45a049;
+}
+</style>
+
+</html>

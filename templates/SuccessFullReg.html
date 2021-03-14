@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Completed</title>
+</head>
+<body>
+    <div class="container">
+        <div class="TopDiv">Successfully Completed Your Registration!!!</div>
+        <div class="BottDiv"><a class="link" href="{{ url_for('login') }}">Login</a> to continue</div>
+    </div>
+</body>
+
+<style>
+    .TopDiv{
+        font-size: 190%;
+        color:white;
+        text-align: center;
+    vertical-align: middle;
+    }
+    .BottDiv{
+        font-size: 20px;
+        color:rgb(255, 255, 255);
+        text-align: center;
+        vertical-align: middle;
+        margin-top:20px;
+    }
+    .container{
+        position: absolute;
+        width: 70%;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        background-color:#2C3446;
+        border-radius: 20px;
+        padding: 30px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .link{
+        color:white;
+        background-color:#222836;
+        padding: 5px;
+        border-radius: 10px;
+        text-decoration: none;
+    }
+</style>
+</html>
