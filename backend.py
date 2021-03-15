@@ -14,7 +14,7 @@ post={
 }
 
 def AddUser(username,password):
-    cluster=MongoClient(os.environ['MONGODB_URI'])
+    cluster=MongoClient("mongodb+srv://AshwinSolankiBoss:AppleBhai76@mydatabase.9snxp.mongodb.net/Book?retryWrites=true&w=majority")
     db=cluster['Book']
     Collection=db['Page']
     if not Collection.find_one({'IsCred':True,"Username":username}):
@@ -23,10 +23,7 @@ def AddUser(username,password):
     return False
 
 def IsUser(username,password):
-    cluster=MongoClient(os.environ['MONGODB_URI'])
+    cluster=MongoClient("mongodb+srv://AshwinSolankiBoss:AppleBhai76@mydatabase.9snxp.mongodb.net/Book?retryWrites=true&w=majority")
     db=cluster['Book']
     Collection=db['Page']
     return bool(Collection.find_one({"IsCred":True,"Username":username,"Password":password}))
-
-
-print(os.environ['MONGODB_URI'])
