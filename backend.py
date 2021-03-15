@@ -1,10 +1,8 @@
 from pymongo import MongoClient
 from config import *
 from datetime import datetime
+import os
 
-# cluster = MongoClient("mongodb+srv://AshwinSolankiBoss:"+pswd+"@mydatabase.9snxp.mongodb.net/"+dbname+"?retryWrites=true&w=majority")
-# db=cluster[dbname]
-# Collection=db[coll]
 
 post={
     "isNote":True,
@@ -16,16 +14,19 @@ post={
 }
 
 def AddUser(username,password):
-    cluster=MongoClient("mongodb+srv://AshwinSolankiBoss:"+pswd+"@mydatabase.9snxp.mongodb.net/"+dbname+"?retryWrites=true&w=majority")
-    db=cluster[dbname]
-    Collection=db[coll]
+    cluster=MongoClient(os.environ['MONGODB_URI'])
+    db=cluster['Book']
+    Collection=db['Page']
     if not Collection.find_one({'IsCred':True,"Username":username}):
         Collection.insert_one({"IsCred":True,"Username":username,"Password":password})
         return True
     return False
 
 def IsUser(username,password):
-    cluster=MongoClient("mongodb+srv://AshwinSolankiBoss:"+pswd+"@mydatabase.9snxp.mongodb.net/"+dbname+"?retryWrites=true&w=majority")
-    db=cluster[dbname]
-    Collection=db[coll]
+    cluster=MongoClient(os.environ['MONGODB_URI'])
+    db=cluster['Book']
+    Collection=db['Page']
     return bool(Collection.find_one({"IsCred":True,"Username":username,"Password":password}))
+
+
+print(os.environ['MONGODB_URI'])
