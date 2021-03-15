@@ -1,9 +1,8 @@
 from pymongo import MongoClient
 from datetime import datetime
 import os
-from boto.s3.connection import S3Connection
 
-link = S3Connection(os.environ['MONGODB_URI'])
+link=os.environ.get('MONGODB_URI')
 
 post={
     "isNote":True,
