@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from config import *
+# from config import *
 from datetime import datetime
 import os
 
