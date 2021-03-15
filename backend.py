@@ -1,8 +1,9 @@
 from pymongo import MongoClient
-# from config import *
 from datetime import datetime
 import os
+from boto.s3.connection import S3Connection
 
+link = S3Connection(os.environ['MONGODB_URI'])
 
 post={
     "isNote":True,
@@ -14,7 +15,7 @@ post={
 }
 
 def AddUser(username,password):
-    cluster=MongoClient("mongodb+srv://AshwinSolankiBoss:AppleBhai76@mydatabase.9snxp.mongodb.net/Book?retryWrites=true&w=majority")
+    cluster=MongoClient(link)
     db=cluster['Book']
     Collection=db['Page']
     if not Collection.find_one({'IsCred':True,"Username":username}):
@@ -23,7 +24,7 @@ def AddUser(username,password):
     return False
 
 def IsUser(username,password):
-    cluster=MongoClient("mongodb+srv://AshwinSolankiBoss:AppleBhai76@mydatabase.9snxp.mongodb.net/Book?retryWrites=true&w=majority")
+    cluster=MongoClient(link)
     db=cluster['Book']
     Collection=db['Page']
     return bool(Collection.find_one({"IsCred":True,"Username":username,"Password":password}))
